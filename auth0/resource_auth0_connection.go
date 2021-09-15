@@ -613,12 +613,6 @@ var connectionSchema = map[string]*schema.Schema{
 					Optional:    true,
 					Description: "",
 				},
-
-				"use_common_endpoint": {
-					Type:        schema.TypeBool,
-					Optional:    true,
-					Description: "",
-				},
 			},
 		},
 		Description: "Configuration settings for connection options",
