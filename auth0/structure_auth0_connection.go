@@ -247,6 +247,10 @@ func flattenConnectionOptionsAzureAD(o *management.ConnectionOptionsAzureAD) int
 		"set_user_root_attributes":               o.GetSetUserAttributes(),
 		"non_persistent_attrs":                   o.GetNonPersistentAttrs(),
 		"should_trust_email_verified_connection": o.GetTrustEmailVerified(),
+		"ext_groups":                             o.GetGroups(),
+		"ext_nested_groups":                      o.GetNestedGroups(),
+		"basic_profile":                          o.GetBasicProfile(),
+		"ext_profile":                            o.GetExtendedProfile(),
 	}
 }
 
@@ -604,6 +608,10 @@ func expandConnectionOptionsAzureAD(d ResourceData) *management.ConnectionOption
 		SetUserAttributes:   String(d, "set_user_root_attributes"),
 		NonPersistentAttrs:  castToListOfStrings(Set(d, "non_persistent_attrs").List()),
 		TrustEmailVerified:  String(d, "should_trust_email_verified_connection"),
+		Groups:              Bool(d, "ext_groups"),
+		NestedGroups:        Bool(d, "ext_nested_groups"),
+		BasicProfile:        Bool(d, "basic_profile"),
+		ExtendedProfile:     Bool(d, "ext_profile"),
 	}
 
 	expandConnectionOptionsScopes(d, o)
